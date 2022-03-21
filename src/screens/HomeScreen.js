@@ -1,4 +1,4 @@
-import { Button, Text, View } from 'react-native';
+import { Button, Text, SafeAreaView } from 'react-native';
 
 export default function HomeScreen({ navigation }) {
   const goToSettings = () => {
@@ -6,13 +6,13 @@ export default function HomeScreen({ navigation }) {
   };
 
   return (
-    <View>
+    <SafeAreaView>
       <Text>Estamos en HomeScreen</Text>
       <Text>Estamos en HomeScreen</Text>
       <Text>Estamos en HomeScreen</Text>
       <Text>Estamos en HomeScreen</Text>
       <Text>Estamos en HomeScreen</Text>
       <Button onPress={goToSettings} title='Go to Settings' />
-    </View>
+    </SafeAreaView>
   );
 }

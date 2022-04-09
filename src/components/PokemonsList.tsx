@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import { ActivityIndicator, FlatList, Platform, StyleSheet } from 'react-native';
 
 import PokemonCard from './PokemonCard';
 
@@ -31,11 +31,12 @@ const PokemonsList: FC<PokemonsListProps> = ({ hasNext, loadPokemons, pokemons }
 
 const styles = StyleSheet.create({
   flatListContentContainer: {
+    marginTop: Platform.OS === 'android' ? 30 : 0,
     paddingHorizontal: 5,
   },
   spinner: {
     marginTop: 20,
-    marginBottom: 60,
+    marginBottom: Platform.OS === 'android' ? 90 : 60,
   },
 });
 

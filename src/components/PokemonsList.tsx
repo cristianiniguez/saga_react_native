@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { FlatList, StyleSheet, Text } from 'react-native';
 
+import PokemonCard from './PokemonCard';
+
 type PokemonsListProps = {
   pokemons: any[];
 };
@@ -12,7 +14,7 @@ const PokemonsList: FC<PokemonsListProps> = ({ pokemons }) => {
       data={pokemons}
       keyExtractor={(pokemon) => pokemon.id.toString()}
       numColumns={2}
-      renderItem={({ item }) => <Text>{item.name}</Text>}
+      renderItem={({ item }) => <PokemonCard pokemon={item} />}
       showsVerticalScrollIndicator={false}
     />
   );

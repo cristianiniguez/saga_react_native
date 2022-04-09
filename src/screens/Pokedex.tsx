@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, Text } from 'react-native';
 
-import { getPokemons } from '../api/pokemon';
+import { getPokemonByUrl, getPokemons } from '../api/pokemon';
 
 export default function Pokedex() {
+  const [pokemons, setPokemons] = useState<any>([]);
+
   useEffect(() => {
     loadPokemons();
   }, []);
@@ -11,7 +13,18 @@ export default function Pokedex() {
   const loadPokemons = async () => {
     try {
       const response = await getPokemons();
-      console.log(response);
+      const newPokemons = [];
+      for await (const pokemon of response.results) {
+        const pokemonDetails = await getPokemonByUrl(pokemon.url);
+        newPokemons.push({
+          id: pokemonDetails.id,
+          name: pokemonDetails.name,
+          type: pokemonDetails.types[0].type.name,
+          order: pokemonDetails.order,
+          image: pokemonDetails.sprites.other['official-artwork'].front_default,
+        });
+      }
+      setPokemons([...pokemons, ...newPokemons]);
     } catch (error) {
       console.log(error);
     }

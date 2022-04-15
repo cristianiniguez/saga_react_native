@@ -1,9 +1,10 @@
 import { FC, useEffect, useState } from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { getPokemonDetails } from '../api/pokemon';
 import type { PokedexStackParamList } from '../navigation/PokedexNavigation';
+import PokemonHeader from '../components/PokemonHeader';
 
 type PokemonProps = NativeStackScreenProps<PokedexStackParamList, 'Pokemon'>;
 
@@ -26,9 +27,14 @@ const Pokemon: FC<PokemonProps> = ({ navigation, route: { params } }) => {
   if (!pokemon) return null;
 
   return (
-    <SafeAreaView>
-      <Text>{pokemon.name}</Text>
-    </SafeAreaView>
+    <ScrollView>
+      <PokemonHeader
+        image={pokemon.sprites.other['official-artwork'].front_default}
+        name={pokemon.name}
+        order={pokemon.order}
+        type={pokemon.types[0].type.name}
+      />
+    </ScrollView>
   );
 };
 

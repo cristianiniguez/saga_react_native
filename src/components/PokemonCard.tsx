@@ -1,17 +1,23 @@
 import { FC } from 'react';
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { capitalize } from 'lodash';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { getColorByPokemonType } from '../utils/getColorByPokemonType';
+import type { PokedexStackParamList } from '../navigation/PokedexNavigation';
 
 type PokemonCardProps = {
   pokemon: any;
 };
 
 const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
+  const navigation = useNavigation<NativeStackNavigationProp<PokedexStackParamList>>();
+
   const goToPokemon = () => {
-    console.log(pokemon);
+    navigation.navigate('Pokemon', { id: pokemon.id });
   };
+
   const pokemonColor = getColorByPokemonType(pokemon.type);
 
   const cardStyles = {

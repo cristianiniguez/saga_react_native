@@ -5,6 +5,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { getPokemonDetails } from '../api/pokemon';
 import type { PokedexStackParamList } from '../navigation/PokedexNavigation';
 import PokemonHeader from '../components/PokemonHeader';
+import PokemonType from '../components/PokemonType';
 
 type PokemonProps = NativeStackScreenProps<PokedexStackParamList, 'Pokemon'>;
 
@@ -34,6 +35,7 @@ const Pokemon: FC<PokemonProps> = ({ navigation, route: { params } }) => {
         order={pokemon.order}
         type={pokemon.types[0].type.name}
       />
+      <PokemonType types={pokemon.types} />
     </ScrollView>
   );
 };

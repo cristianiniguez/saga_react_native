@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
+import Icon from '@expo/vector-icons/FontAwesome5';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { getPokemonDetails } from '../api/pokemon';
@@ -12,6 +13,20 @@ type PokemonProps = NativeStackScreenProps<PokedexStackParamList, 'Pokemon'>;
 
 const Pokemon: FC<PokemonProps> = ({ navigation, route: { params } }) => {
   const [pokemon, setPokemon] = useState<any | null>(null);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => null,
+      headerLeft: () => (
+        <Icon
+          color='#fff'
+          name='arrow-left'
+          onPress={() => navigation.goBack()}
+          style={{ marginLeft: 20 }}
+        />
+      ),
+    });
+  }, [navigation, params]);
 
   useEffect(() => {
     loadPokemon();

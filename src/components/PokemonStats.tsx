@@ -11,8 +11,6 @@ type PokemonStatsProps = {
 };
 
 const PokemonStats: FC<PokemonStatsProps> = ({ stats }) => {
-  console.log(stats);
-
   const barStyles = (number: number) => ({
     backgroundColor: number > 50 ? '#00ac17' : '#ff3e3e',
     width: `${number}%`,

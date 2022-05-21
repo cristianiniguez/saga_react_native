@@ -14,3 +14,8 @@ export async function getPokemonFavorites() {
   const favorites = await AsyncStorage.getItem(FAVORITE_STORAGE);
   return favorites ? JSON.parse(favorites) : [];
 }
+
+export async function isPokemonFavorite(id: string) {
+  const favorites = await getPokemonFavorites();
+  return includes(favorites, id);
+}

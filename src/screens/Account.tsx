@@ -6,10 +6,5 @@ import UserData from '../components/auth/UserData';
 export default function Account() {
   const auth = null;
 
-  return (
-    <View>
-      {auth ? <UserData /> : <LoginForm />}
-      <Text>Account</Text>
-    </View>
-  );
+  return <View>{auth ? <UserData /> : <LoginForm />}</View>;
 }

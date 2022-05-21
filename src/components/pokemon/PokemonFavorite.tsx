@@ -1,13 +1,14 @@
 import { FC } from 'react';
 import Icon from '@expo/vector-icons/FontAwesome5';
+import { addPokemonToFavorites } from '../../api/favorite';
 
 type PokemonFavoriteProps = {
   id: string;
 };
 
 const PokemonFavorite: FC<PokemonFavoriteProps> = ({ id }) => {
-  const addToFavorites = () => {
-    console.log('Add to favorites', id);
+  const addToFavorites = async () => {
+    await addPokemonToFavorites(id);
   };
 
   return (

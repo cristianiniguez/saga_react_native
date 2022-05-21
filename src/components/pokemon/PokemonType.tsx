@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { capitalize } from 'lodash';
 
-import { getColorByPokemonType } from '../utils/getColorByPokemonType';
+import { getColorByPokemonType } from '../../utils/getColorByPokemonType';
 
 type PokemonTypeProps = {
   types: { slot: number; type: { name: string; url: string } }[];

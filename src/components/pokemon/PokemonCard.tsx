@@ -4,8 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import { capitalize } from 'lodash';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { getColorByPokemonType } from '../utils/getColorByPokemonType';
-import type { PokedexStackParamList } from '../navigation/PokedexNavigation';
+import { getColorByPokemonType } from '../../utils/getColorByPokemonType';
+import type { PokedexStackParamList } from '../../navigation/PokedexNavigation';
 
 type PokemonCardProps = {
   pokemon: any;

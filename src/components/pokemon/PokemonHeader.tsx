@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { capitalize } from 'lodash';
 
-import { getColorByPokemonType } from '../utils/getColorByPokemonType';
+import { getColorByPokemonType } from '../../utils/getColorByPokemonType';
 
 type PokemonHeaderProps = {
   image: string;

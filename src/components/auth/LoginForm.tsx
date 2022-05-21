@@ -9,7 +9,6 @@ import useAuth from '../../hooks/useAuth';
 const LoginForm = () => {
   const [error, setError] = useState('');
   const { login, user } = useAuth();
-  console.log(user);
 
   const getInitialValues = () => ({ username: '', password: '' });
 

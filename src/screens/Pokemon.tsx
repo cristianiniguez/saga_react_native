@@ -4,19 +4,22 @@ import Icon from '@expo/vector-icons/FontAwesome5';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { getPokemonDetails } from '../api/pokemon';
-import PokemonHeader from '../components/PokemonHeader';
-import PokemonType from '../components/PokemonType';
-import PokemonStats from '../components/PokemonStats';
+import PokemonHeader from '../components/pokemon/PokemonHeader';
+import PokemonType from '../components/pokemon/PokemonType';
+import PokemonStats from '../components/pokemon/PokemonStats';
+import PokemonFavorite from '../components/pokemon/PokemonFavorite';
+import useAuth from '../hooks/useAuth';
 import type { PokedexStackParamList } from '../navigation/PokedexNavigation';
 
 type PokemonProps = NativeStackScreenProps<PokedexStackParamList, 'Pokemon'>;
 
 const Pokemon: FC<PokemonProps> = ({ navigation, route: { params } }) => {
+  const { user } = useAuth();
   const [pokemon, setPokemon] = useState<any | null>(null);
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => null,
+      headerRight: () => pokemon && user && <PokemonFavorite id={pokemon.id} />,
       headerLeft: () => (
         <Icon
           color='#fff'
@@ -26,7 +29,7 @@ const Pokemon: FC<PokemonProps> = ({ navigation, route: { params } }) => {
         />
       ),
     });
-  }, [navigation, params]);
+  }, [navigation, params, user, pokemon]);
 
   useEffect(() => {
     loadPokemon();

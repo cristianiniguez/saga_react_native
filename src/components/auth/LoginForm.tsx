@@ -4,9 +4,13 @@ import * as Yup from 'yup';
 
 import { userCredentials, userDetails } from '../../utils/userDB';
 import { useState } from 'react';
+import useAuth from '../../hooks/useAuth';
 
 const LoginForm = () => {
   const [error, setError] = useState('');
+  const { login, user } = useAuth();
+  console.log(user);
+
   const getInitialValues = () => ({ username: '', password: '' });
 
   const getValidationSchema = () =>
@@ -24,6 +28,7 @@ const LoginForm = () => {
       if (username !== userCredentials.username || password !== userCredentials.password) {
         setError('El usuario o la contraseña no son correctos');
       } else {
+        login(userDetails);
         console.log('Login correcto');
       }
     },

@@ -4,9 +4,10 @@ import { includes, pull } from 'lodash';
 import { FAVORITE_STORAGE } from '../utils/constants';
 
 export async function addPokemonToFavorites(id: string) {
-  const favorites = [];
-  favorites.push(id);
-  await AsyncStorage.setItem(FAVORITE_STORAGE, JSON.stringify(favorites));
+  const favorites = await getPokemonFavorites();
+  const newFavorites = [...favorites, id];
+  await AsyncStorage.setItem(FAVORITE_STORAGE, JSON.stringify(newFavorites));
+  return favorites;
 }
 
 export async function getPokemonFavorites() {

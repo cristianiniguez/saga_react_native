@@ -24,8 +24,9 @@ const Pokemon: FC<PokemonProps> = ({ navigation, route: { params } }) => {
         <Icon
           color='#fff'
           name='arrow-left'
+          size={20}
           onPress={() => navigation.goBack()}
-          style={{ marginLeft: 20 }}
+          style={{ marginLeft: 8 }}
         />
       ),
     });

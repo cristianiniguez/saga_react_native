@@ -10,7 +10,7 @@ export async function addPokemonToFavorites(id: string) {
   return favorites;
 }
 
-export async function getPokemonFavorites() {
+export async function getPokemonFavorites(): Promise<string[]> {
   const favorites = await AsyncStorage.getItem(FAVORITE_STORAGE);
   return favorites ? JSON.parse(favorites) : [];
 }

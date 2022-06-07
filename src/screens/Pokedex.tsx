@@ -5,7 +5,7 @@ import PokemonsList from '../components/pokemon/PokemonsList';
 import { getPokemonByUrl, getPokemons } from '../api/pokemon';
 
 export default function Pokedex() {
-  const [pokemons, setPokemons] = useState<any>([]);
+  const [pokemons, setPokemons] = useState<any[]>([]);
   const [nextUrl, setNextUrl] = useState<string | undefined>(undefined);
 
   useEffect(() => {

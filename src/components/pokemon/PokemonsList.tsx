@@ -4,13 +4,13 @@ import { ActivityIndicator, FlatList, Platform, StyleSheet } from 'react-native'
 import PokemonCard from './PokemonCard';
 
 type PokemonsListProps = {
-  hasNext: boolean;
-  loadPokemons: () => void | Promise<void>;
+  hasNext?: boolean;
+  loadPokemons?: () => void | Promise<void>;
   pokemons: any[];
 };
 
-const PokemonsList: FC<PokemonsListProps> = ({ hasNext, loadPokemons, pokemons }) => {
-  const loadMore = () => loadPokemons();
+const PokemonsList: FC<PokemonsListProps> = ({ hasNext = false, loadPokemons, pokemons }) => {
+  const loadMore = () => loadPokemons?.();
 
   return (
     <FlatList

@@ -4,6 +4,7 @@ import { SafeAreaView, Text } from 'react-native';
 
 import { getPokemonFavorites } from '../api/favorite';
 import { getPokemonDetails } from '../api/pokemon';
+import NoLogged from '../components/NoLogged';
 import PokemonsList from '../components/pokemon/PokemonsList';
 import useAuth from '../hooks/useAuth';
 
@@ -33,9 +34,7 @@ export default function Favorites() {
     }, []),
   );
 
-  if (!user) {
-    return <Text>User not logged</Text>;
-  }
+  if (!user) return <NoLogged />;
 
   return (
     <SafeAreaView>

@@ -13,7 +13,6 @@ type PokemonFavoriteProps = {
 const PokemonFavorite: FC<PokemonFavoriteProps> = ({ id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [reloadCheck, setReloadCheck] = useState(false);
-  console.log(isFavorite);
 
   useEffect(() => {
     isPokemonFavorite(id).then(setIsFavorite);
